@@ -1,27 +1,27 @@
+package ru.netology.javaqa.massive.stats;
 
-
-public class StatsService<number, returne> {
-    public long countSum(long[] sales) { //сумма всех продаж
+public class StatsService {
+    public long countSum(long[] sales) {
         long sum = 0;
-        for (long sale : sales) { //цикл прочтения массива
-            sum += sale; //поэлементная запись
+        for (long sale : sales) {
+            sum += sale;
         }
         return sum;
     }
 
-    public long countAverageSale(long[] sales) {//средняя сумма продаж в месяц
+    public long countAverage(long[] sales) {
         long average = 0;
         long sum = countSum(sales);
-        average = sum / sales.length; //сумма продаж деленная на количество записей/месяцев
+        average = sum / sales.length;
         return average;
     }
 
 
-    public int maxSum(long[] sales) { //Номер месяца, в котором был максимум продаж
+    public int maxSum(long[] sales) {
         int maxMonth = 0;
         int month = 0;
         for (long sale : sales) {
-            if (sale >= sales[maxMonth]) { //поиск максимума
+            if (sale >= sales[maxMonth]) {
                 maxMonth = month;
             }
             month = month + 1;
@@ -29,7 +29,7 @@ public class StatsService<number, returne> {
         return maxMonth + 1;
     }
 
-    public int minSum(long[] sales) { //Номер месяца, в котором был минимум продаж
+    public int minSum(long[] sales) {
         int minMonth = 0;
         int month = 0;
         for (long sale : sales) {
@@ -42,18 +42,18 @@ public class StatsService<number, returne> {
     }
 
 
-    public long lowerAverage(long[] sales) {  // Кол-во месяцев, в которых продажи были ниже среднего
-        long average = countAverageSale(sales);
+    public long minAverage(long[] sales) {
+        long average = countAverage(sales);
         int numberMonth = 0;
         for (long sale : sales) {
             if (sale < average) {
-                numberMonth++; //счетчик
+                numberMonth++;
             }
         }
         return numberMonth;
     }
-    public long upperAverage(long[] sales) {  //Кол-во месяцев, в которых продажи были выше среднего
-        long average = countAverageSale(sales);
+    public long maxAverage(long[] sales) {
+        long average = countAverage(sales);
         int numberMonth = 0;
         for (long sale : sales) {
             if (sale > average) {
